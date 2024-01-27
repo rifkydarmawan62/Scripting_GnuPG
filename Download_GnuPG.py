@@ -16,7 +16,7 @@ if system().lower() == "windows":
         URL = "https://files.gpg4win.org/gpg4win-4.3.0.exe"
         LOKASI_UNDUHAN = f"{DIREKTORI_FOLDER}\\gpg4win-4.3.0.exe"
         PERINTAH = f"bitsadmin /transfer \"Mengunduh_GnuPG\" /download /priority FOREGROUND \"{URL}\" \"{LOKASI_UNDUHAN}\""
-        print(f"Menjalankan perintah Windows Command Prompt [{Fore.BLACK}{Back.LIGHTYELLOW_EX}{PERINTAH}{Fore.RESET}{Back.RESET}] ...")
+        print(f"Menjalankan perintah Windows Command Prompt {Fore.BLACK}{Back.LIGHTYELLOW_EX}{PERINTAH}{Fore.RESET}{Back.RESET} ...")
         try:
             run(PERINTAH, shell = True, check = True)
         except CalledProcessError:
@@ -28,7 +28,7 @@ if system().lower() == "windows":
             if exists(LOKASI_UNDUHAN):
                 remove(LOKASI_UNDUHAN)
         else:
-            print(f"Menjalankan perintah instalasi GnuPG [{Fore.BLACK}{Back.LIGHTYELLOW_EX}\"{LOKASI_UNDUHAN}\"{Fore.RESET}{Back.RESET}] ...")
+            print(f"Menjalankan perintah instalasi GnuPG {Fore.BLACK}{Back.LIGHTYELLOW_EX}\"{LOKASI_UNDUHAN}\"{Fore.RESET}{Back.RESET} ...")
             try:
                 run(f"\"{LOKASI_UNDUHAN}\"", shell = True, check = True)
             except CalledProcessError:
