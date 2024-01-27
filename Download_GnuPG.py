@@ -13,7 +13,7 @@ if system().lower() == "windows":
     if DIREKTORI_FOLDER:
         URL = "https://files.gpg4win.org/gpg4win-4.3.0.exe"
         LOKASI_UNDUHAN = f"{DIREKTORI_FOLDER}\\{URL.split("/")[-1]}"
-        PERINTAH = f"bitsadmin /transfer \"Mengunduh_GnuPG\" /download /priority FOREGROUND \"{URL}\" \"{LOKASI_UNDUHAN}\" && \"{LOKASI_UNDUHAN}\""
+        PERINTAH = f"bitsadmin /transfer \"Mengunduh_Instalasi_GnuPG\" /download /priority FOREGROUND \"{URL}\" \"{LOKASI_UNDUHAN}\" && \"{LOKASI_UNDUHAN}\""
         print(f"{Fore.YELLOW}Menjalankan perintah Windows Command Prompt {Fore.BLACK}{Back.LIGHTBLUE_EX}{PERINTAH}{Fore.YELLOW}{Back.RESET} ...{Fore.RESET}")
         try:
             run(PERINTAH, shell = True, check = True)
