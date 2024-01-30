@@ -1,14 +1,8 @@
 from subprocess import CalledProcessError, run
 from colorama import Fore, Back
 from platform import system
+from modul import bersihkan_layar
 
-def bersihkan_layar(teks : str | None = None):
-    if system().lower() == "windows":
-        run("cls", shell = True)
-    else:
-        run("clear", shell = True)
-    if teks:
-        print(teks)
 bersihkan_layar(f"{Fore.YELLOW}Memeriksa perintah gpg ...{Fore.RESET}")
 try:
     run("gpg --version", shell = True, check = True)
@@ -16,7 +10,7 @@ except CalledProcessError:
     print(f"{Fore.LIGHTRED_EX}Perintah gpg tidak ditemukan!{Fore.RESET}")
 else:
     PERINTAH = "gpg --full-generate-key --verbose"
-    print(f"{Fore.YELLOW}Menjalankan perintah {Fore.BLACK}{Back.LIGHTBLUE_EX}{PERINTAH}{Fore.RESET}{Back.RESET} {Fore.YELLOW}...{Fore.RESET}")
+    print(f"{Fore.YELLOW}Menjalankan perintah {Fore.LIGHTYELLOW_EX}{Back.BLUE}{PERINTAH}{Fore.YELLOW}{Back.RESET} ...{Fore.RESET}")
     try:
         run(PERINTAH, shell = True, check = True)
     except CalledProcessError:
@@ -28,7 +22,7 @@ else:
     if system().lower() == "windows":
         NAMA_PROSES = "gpg-agent.exe", "keyboxd.exe"
         PERINTAH_HENTIKAN_PROSES = f"taskkill /F /IM \"{NAMA_PROSES[0]}\" & taskkill /F /IM \"{NAMA_PROSES[1]}\""
-        print(f"{Fore.YELLOW}Menghentikan proses {Fore.BLACK}{Back.LIGHTYELLOW_EX}{NAMA_PROSES[0]}{Fore.YELLOW}{Back.RESET}, dan {Fore.BLACK}{Back.LIGHTYELLOW_EX}{NAMA_PROSES[1]}{Fore.YELLOW}{Back.RESET} menggunakan perintah Windows Command Prompt {Fore.BLACK}{Back.LIGHTBLUE_EX}{PERINTAH_HENTIKAN_PROSES}{Fore.YELLOW}{Back.RESET} ...{Fore.RESET}")
+        print(f"{Fore.YELLOW}Menghentikan proses {Fore.LIGHTYELLOW_EX}{Back.BLUE}{NAMA_PROSES[0]}{Fore.YELLOW}{Back.RESET}, dan {Fore.BLACK}{Back.LIGHTYELLOW_EX}{NAMA_PROSES[1]}{Fore.YELLOW}{Back.RESET} menggunakan perintah Windows Command Prompt {Fore.LIGHTYELLOW_EX}{Back.BLUE}{PERINTAH_HENTIKAN_PROSES}{Fore.YELLOW}{Back.RESET} ...{Fore.RESET}")
         try:
             run(PERINTAH_HENTIKAN_PROSES, shell = True, check = True)
         except CalledProcessError:
